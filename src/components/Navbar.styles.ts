@@ -15,6 +15,38 @@ export const Header = styled.header`
   }
 `;
 
-export const Nav = styled.nav<{ isNavOpen: boolean }>`
-  transform: ${(p) => (p.isNavOpen ? 'translateX(0)' : 'translateX(100vw)')};
+export const Nav = styled.nav<{ navOpen: boolean }>`
+  /* transform: ${(p) => (p.navOpen ? 'translateX(0)' : 'translateX(100vw)')}; */
+`;
+
+export const NavMobileLabel = styled.label`
+  z-index: 1000;
+  text-align: center;
+`;
+
+export const NavMobileIcon = styled.span<{ navOpen: boolean }>`
+  position: relative;
+  background-color: ${theme.secondary};
+  width: 1rem;
+  height: 2px;
+  display: inline-block;
+
+  &::before,
+  &::after {
+    content: '';
+    background-color: ${theme.secondary};
+    width: 1rem;
+    height: 2px;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+  }
+  &::before {
+    top: ${(props) => (props.navOpen ? '0' : '-0.4rem')};
+    transform: ${(props) => (props.navOpen ? 'rotate(135deg)' : 'rotate(0)')};
+  }
+  &::after {
+    top: ${(props) => (props.navOpen ? '0' : '0.4rem')};
+    transform: ${(props) => (props.navOpen ? 'rotate(-135deg)' : 'rotate(0)')};
+  }
 `;
