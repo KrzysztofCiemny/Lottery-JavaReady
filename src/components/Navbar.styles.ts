@@ -7,13 +7,16 @@ export const Header = styled.header`
   padding: 1em;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   overflow: hidden;
 
   h2 {
     margin: 0;
     padding: 0;
     color: ${theme.secondary};
+  }
+
+  @media (min-width: 1024px) {
+    align-items: center;
   }
 `;
 
