@@ -7,6 +7,7 @@ export const Header = styled.header`
   padding: 1em;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   overflow: hidden;
 
   h2 {
@@ -30,15 +31,28 @@ export const NavWrapper = styled.nav<{ navOpen: boolean }>`
   transform: ${(p) => (p.navOpen ? 'translateY(0)' : 'translateY(-100vh)')};
   transition: all 0.7s ease-in-out;
   overflow: hidden;
+
+  @media (min-width: 1024px) {
+    height: 100%;
+    width: unset;
+    position: unset;
+    transform: unset;
+    transition: unset;
+  }
 `;
 
 export const Nav = styled.ul`
+  margin: 0;
   padding: 0;
   list-style-type: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+  }
 `;
 
 export const NavLink = styled.li`
@@ -46,6 +60,13 @@ export const NavLink = styled.li`
   padding: 1rem 0;
   font-size: 1.2rem;
   font-weight: bold;
+  cursor: pointer;
+
+  @media (min-width: 1024px) {
+    padding: 0 1rem;
+    font-size: 1rem;
+    font-weight: unset;
+  }
 `;
 
 export const NavMobileLabel = styled.label`
@@ -53,6 +74,10 @@ export const NavMobileLabel = styled.label`
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
 `;
 
 export const NavMobileIcon = styled.span<{ navOpen: boolean }>`
