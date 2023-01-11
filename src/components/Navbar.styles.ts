@@ -7,6 +7,7 @@ export const Header = styled.header`
   padding: 1em;
   display: flex;
   justify-content: space-between;
+  overflow: hidden;
 
   h2 {
     margin: 0;
@@ -15,38 +16,71 @@ export const Header = styled.header`
   }
 `;
 
-export const Nav = styled.nav<{ navOpen: boolean }>`
-  /* transform: ${(p) => (p.navOpen ? 'translateX(0)' : 'translateX(100vw)')}; */
+export const NavWrapper = styled.nav<{ navOpen: boolean }>`
+  height: 100vh;
+  width: 100vw;
+  background-color: ${theme.primary};
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  transform: ${(p) => (p.navOpen ? 'translateY(0)' : 'translateY(-100vh)')};
+  transition: all 0.7s ease-in-out;
+  overflow: hidden;
+`;
+
+export const Nav = styled.ul`
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const NavLink = styled.li`
+  color: ${theme.secondary};
+  padding: 1rem 0;
+  font-size: 1.2rem;
+  font-weight: bold;
 `;
 
 export const NavMobileLabel = styled.label`
   z-index: 1000;
   text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 `;
 
 export const NavMobileIcon = styled.span<{ navOpen: boolean }>`
   position: relative;
-  background-color: ${theme.secondary};
-  width: 1rem;
+  background-color: ${(props) => (props.navOpen ? 'transparent' : theme.secondary)};
+  width: 1.4rem;
   height: 2px;
   display: inline-block;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
 
   &::before,
   &::after {
     content: '';
     background-color: ${theme.secondary};
-    width: 1rem;
+    width: 1.4rem;
     height: 2px;
     display: inline-block;
     position: absolute;
     left: 0;
+    transition: all 0.3s ease-in-out;
   }
   &::before {
     top: ${(props) => (props.navOpen ? '0' : '-0.4rem')};
-    transform: ${(props) => (props.navOpen ? 'rotate(135deg)' : 'rotate(0)')};
+    transform: ${(props) => (props.navOpen ? 'rotate(45deg)' : 'rotate(0)')};
   }
   &::after {
     top: ${(props) => (props.navOpen ? '0' : '0.4rem')};
-    transform: ${(props) => (props.navOpen ? 'rotate(-135deg)' : 'rotate(0)')};
+    transform: ${(props) => (props.navOpen ? 'rotate(-45deg)' : 'rotate(0)')};
   }
 `;
