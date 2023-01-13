@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { theme } from '../Theme';
@@ -58,12 +59,13 @@ export const Nav = styled.ul`
   }
 `;
 
-export const NavLink = styled.li`
+export const StyledLink = styled(NavLink)`
   color: ${theme.secondary};
   padding: 1rem 0;
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
+  text-decoration: none;
 
   @media (min-width: 1024px) {
     padding: 0 1rem;

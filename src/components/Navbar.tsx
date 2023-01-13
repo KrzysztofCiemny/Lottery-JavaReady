@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import {
   Header,
   Nav,
-  NavLink,
   NavMobileIcon,
   NavMobileLabel,
   NavWrapper,
+  StyledLink,
 } from './Navbar.styles';
 
 export const Navbar = () => {
@@ -20,10 +20,10 @@ export const Navbar = () => {
       </NavMobileLabel>
       <NavWrapper navOpen={navOpen}>
         <Nav>
-          <NavLink>Home</NavLink>
-          <NavLink>Play</NavLink>
-          <NavLink>Results</NavLink>
-          <NavLink>Linkedin</NavLink>
+          <StyledLink to="/">Home</StyledLink>
+          <StyledLink to="/play">Play</StyledLink>
+          <StyledLink to="/results">Results</StyledLink>
+          <StyledLink to="/">Linkedin</StyledLink>
         </Nav>
       </NavWrapper>
     </Header>

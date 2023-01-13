@@ -14,7 +14,7 @@ const App: React.FC = () => {
       <ThemeProvider theme={theme}>
         <Navbar />
         <Routes>
-          <Route index element={<HomePage />} />
+          <Route index path="/" element={<HomePage />} />
           <Route path="/play" element={<PlayPage />} />
           <Route path="/results" element={<ResultsPage />} />
         </Routes>
