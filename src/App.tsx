@@ -1,48 +1,25 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import { ButtonsSection, HeroBanner, RulesSection } from './App.styles';
 import { Navbar } from './components/Navbar';
+import { HomePage } from './pages/HomePage';
+import { PlayPage } from './pages/PlayPage';
+import { ResultsPage } from './pages/ResultsPage';
 import { theme } from './Theme';
 
 const App: React.FC = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <Navbar />
-      <main>
-        <HeroBanner>
-          <h1>Lottery</h1>
-          <h1>JavaReady.pl</h1>
-        </HeroBanner>
-        <ButtonsSection>
-          <button>Play</button>
-          <button>Results</button>
-        </ButtonsSection>
-        <RulesSection>
-          <article>
-            <h3>How to play?</h3>
-            <ul>
-              <li>
-                Try to relax and indulge yourself with a pint of decent quality beer.
-              </li>
-              <li>Think of 6 lucky numbers, from 1 to 99.</li>
-              <li>Numbers must be distinct.</li>
-              <li>Go straight to the lottery page, and input your lucky numbers.</li>
-              <li>
-                Note your coupon identifier and wait for the winning numbers draw date!
-              </li>
-            </ul>
-          </article>
-          <article>
-            <h3>Rewards</h3>
-            <p>
-              Your reward is a unique opportunity to do something good. For each level of
-              win, you can support animal shelters!
-            </p>
-          </article>
-        </RulesSection>
-      </main>
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <Navbar />
+        <Routes>
+          <Route index element={<HomePage />} />
+          <Route path="/play" element={<PlayPage />} />
+          <Route path="/results" element={<ResultsPage />} />
+        </Routes>
+      </ThemeProvider>
+    </Router>
   );
 };
 
