@@ -33,7 +33,7 @@ export const NavWrapper = styled.nav<{ navOpen: boolean }>`
   right: 0;
   z-index: 2;
   transform: ${(p) => (p.navOpen ? 'translateY(0)' : 'translateY(-100vh)')};
-  transition: all 0.7s ease-in-out;
+  transition: all 0.5s ease-in-out;
   overflow: hidden;
 
   @media (min-width: 1024px) {

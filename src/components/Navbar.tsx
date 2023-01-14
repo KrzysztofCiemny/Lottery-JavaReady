@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import {
   Header,
@@ -11,6 +12,11 @@ import {
 
 export const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setNavOpen(false);
+  }, [pathname]);
 
   return (
     <Header>
