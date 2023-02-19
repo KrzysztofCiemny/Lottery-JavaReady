@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 
-import { Button, FormContainer, Header, Input } from './PlayPage.styles';
+import { Button } from '../components/Button';
+import { Card } from '../components/Card';
+import { PageHeader } from '../components/PageHeader';
+import { useApi } from '../composables/useApi';
+import { FormButtonsContainer, FormContainer, Input } from './PlayPage.styles';
 
 export const PlayPage = () => {
   const [inputs, setInputs] = useState(Array(6).fill(''));
+  const { sendNumbers } = useApi();
 
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -19,30 +24,40 @@ export const PlayPage = () => {
     setInputs(randomInputs.map(String));
   };
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    sendNumbers({ typedNumbers: inputs });
+  };
+
   return (
     <>
-      <Header>
-        <h2>Play the Lottery</h2>
-        <div>Enter your lucky numbers or just fill the fields randomly</div>
-      </Header>
-      <FormContainer>
-        <div>
-          {inputs.map((input, index) => (
-            <Input
-              key={index}
-              type="number"
-              value={input}
-              onChange={(event) => handleInputChange(event, index)}
-            />
-          ))}
-        </div>
-        <div>
-          <Button type="button" onClick={fillRandom}>
-            Random
-          </Button>
-          <Button type="submit">Submit</Button>
-        </div>
-      </FormContainer>
+      <PageHeader>
+        <h2>Play the lottery</h2>
+        <p>Enter your lucky numbers or just fill the fields randomly</p>
+      </PageHeader>
+      <Card>
+        <FormContainer onSubmit={handleSubmit}>
+          <div>
+            {inputs.map((input, index) => (
+              <Input
+                key={index}
+                type="number"
+                value={input}
+                onChange={(event) => handleInputChange(event, index)}
+                required
+                min={1}
+                max={99}
+              />
+            ))}
+          </div>
+          <FormButtonsContainer>
+            <Button type="button" onClick={fillRandom}>
+              Random
+            </Button>
+            <Button type="submit">Submit</Button>
+          </FormButtonsContainer>
+        </FormContainer>
+      </Card>
     </>
   );
 };

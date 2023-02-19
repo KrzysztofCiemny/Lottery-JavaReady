@@ -8,6 +8,8 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   overflow: hidden;
+  background-color: ${theme.primary};
+  width: 100%;
 
   div {
     color: ${theme.secondary};
@@ -16,15 +18,17 @@ export const Header = styled.header`
   }
 
   @media (min-width: 1024px) {
+    position: sticky;
+    top: 0;
     align-items: center;
-    padding: 2rem 1rem;
+    padding: 1.2rem 3rem;
   }
 `;
 
 export const NavWrapper = styled.nav<{ navOpen: boolean }>`
   height: 100vh;
   width: 100vw;
-  background-color: #181818;
+  background-color: ${theme.primary};
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -58,7 +62,7 @@ export const Nav = styled.ul`
 `;
 
 export const StyledLink = styled(NavLink)`
-  color: #fff;
+  color: ${theme.darkContrast};
   padding: 0.5rem 0;
   font-size: 2.2rem;
   font-weight: bold;

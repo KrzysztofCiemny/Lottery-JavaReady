@@ -8,8 +8,8 @@ body {
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #fff;
-  background-color: #181818;
+  color: #181818;
+  background-color: #F8FBF8;
 }
 
 code {

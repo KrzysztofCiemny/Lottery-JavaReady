@@ -28,7 +28,7 @@ export const Navbar = () => {
         <Nav>
           <StyledLink to="/">Home</StyledLink>
           <StyledLink to="/play">Play</StyledLink>
-          <StyledLink to="/results">Results</StyledLink>
+          <StyledLink to="/checkResults">Check results</StyledLink>
           <StyledLink to="/">Linkedin</StyledLink>
         </Nav>
       </NavWrapper>

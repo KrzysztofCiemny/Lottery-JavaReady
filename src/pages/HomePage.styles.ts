@@ -23,10 +23,10 @@ export const HeroContent = styled.div`
     font-size: 2rem;
     margin: 0;
     max-width: 17ch;
-    color: gray;
+    color: #808080;
   }
   span {
-    color: white;
+    color: ${theme.dark};
   }
   @media (min-width: 1024px) {
     max-width: 50%;
@@ -74,7 +74,7 @@ export const PlayLinkContainer = styled.div`
 export const PlayLink = styled(NavLink)`
   display: flex;
   justify-content: center;
-  color: #fff;
+  color: ${theme.dark};
   text-decoration: none;
   max-width: 8ch;
   cursor: pointer;
@@ -94,12 +94,10 @@ export const PlayLink = styled(NavLink)`
 
   :hover {
     transform: translateX(0.3rem) scale(102%);
-    color: ${theme.secondary};
   }
 
   :hover span {
     transform: translateX(0.6rem) scale(102%);
-    color: ${theme.secondary};
   }
 `;
 

@@ -1,14 +1,5 @@
 import styled from 'styled-components';
 
-export const Header = styled.div`
-  h2 {
-    font-size: 2rem;
-  }
-  div {
-    font-size: 1.1rem;
-  }
-`;
-
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
@@ -23,12 +14,27 @@ export const FormContainer = styled.form`
   }
 `;
 
+export const FormButtonsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+`;
+
 export const Input = styled.input`
-  width: 50px;
-  height: 30px;
-  margin: 10px;
+  width: clamp(36px, 13%, 100px);
+  margin: 0.4rem;
   font-size: 1.2rem;
   text-align: center;
+  ::-webkit-outer-spin-button,
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  -moz-appearance: textfield;
+  @media (min-width: 1024px) {
+    padding: 0.5rem;
+  }
 `;
 
 export const Button = styled.button`

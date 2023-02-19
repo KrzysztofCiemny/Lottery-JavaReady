@@ -17,7 +17,7 @@ export const HomePage = () => {
           </h1>
         </HeroContent>
         <HeroImage>
-          <img alt="coins" src="../../resources/HeroCoins.webp" />
+          <img alt="coins" src="HeroCoins.webp" />
         </HeroImage>
       </HeroBanner>
       <PlayLinkContainer>

@@ -11,8 +11,8 @@ interface Props {
 export const PageWrapper = ({ children }: Props) => {
   return (
     <Wrapper>
+      <Navbar />
       <div>
-        <Navbar />
         <ContentWrapper>{children}</ContentWrapper>
       </div>
       <Footer />
