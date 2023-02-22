@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://ec2-3-69-175-57.eu-central-1.compute.amazonaws.com:8000',
+        target: 'http://ec2-3-75-222-92.eu-central-1.compute.amazonaws.com:8000',
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, ''),

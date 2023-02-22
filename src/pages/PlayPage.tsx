@@ -17,6 +17,27 @@ export const PlayPage = () => {
     const updatedInputs = [...inputs];
     updatedInputs[index] = event.target.value;
     setInputs(updatedInputs);
+
+    if (updatedInputs[index].length > 2) {
+      updatedInputs[index] = updatedInputs[index].slice(0, 2);
+    }
+    if (updatedInputs[index].charAt(0) == 0) {
+      updatedInputs[index] = updatedInputs[index].slice(1);
+    }
+  };
+
+  const handleInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    switch (event.key) {
+      case '-':
+        return false;
+      case '.':
+        return false;
+      case ',':
+        return false;
+      case '+':
+        return false;
+    }
   };
 
   const fillRandom = () => {
@@ -44,6 +65,7 @@ export const PlayPage = () => {
                 type="number"
                 value={input}
                 onChange={(event) => handleInputChange(event, index)}
+                onKeyDown={(event) => handleInputKeyDown(event)}
                 required
                 min={1}
                 max={99}
