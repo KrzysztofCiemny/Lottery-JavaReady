@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { theme } from '../Theme';
+
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
@@ -17,4 +19,17 @@ export const Input = styled.input`
   @media (min-width: 1024px) {
     padding: 0.5rem;
   }
+`;
+
+export const WinningNumbersButton = styled.span`
+  border-bottom: 1px solid;
+  color: ${theme.secondary};
+  cursor: pointer;
+  font-weight: 700;
+`;
+
+export const NumbersDrawnMessage = styled.p`
+  color: green;
+  margin: 0;
+  font-size: 0.8rem;
 `;

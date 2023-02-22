@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 
 import { Button } from '../components/Button';
 import { Card } from '../components/Card';
+import { ErrorMessage } from '../components/ErrorMessage';
 import { PageHeader } from '../components/PageHeader';
 import { useApi } from '../composables/useApi';
 import { FormButtonsContainer, FormContainer, Input } from './PlayPage.styles';
 
 export const PlayPage = () => {
   const [inputs, setInputs] = useState(Array(6).fill(''));
-  const { sendNumbers } = useApi();
+  const { sendNumbers, postRequestError } = useApi();
 
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -27,15 +28,18 @@ export const PlayPage = () => {
   };
 
   const handleInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    event.preventDefault();
     switch (event.key) {
       case '-':
+        event.preventDefault();
         return false;
       case '.':
+        event.preventDefault();
         return false;
       case ',':
+        event.preventDefault();
         return false;
       case '+':
+        event.preventDefault();
         return false;
     }
   };
@@ -78,6 +82,11 @@ export const PlayPage = () => {
             </Button>
             <Button type="submit">Submit</Button>
           </FormButtonsContainer>
+          <ErrorMessage>
+            {postRequestError
+              ? 'Something went wrong. Please try again or refresh the page'
+              : ''}
+          </ErrorMessage>
         </FormContainer>
       </Card>
     </>
