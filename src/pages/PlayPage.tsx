@@ -45,7 +45,10 @@ export const PlayPage = () => {
   };
 
   const fillRandom = () => {
-    const randomInputs = Array.from({ length: 6 }, () => Math.floor(Math.random() * 100));
+    const randomInputs = Array.from(
+      { length: 6 },
+      () => Math.floor(Math.random() * 99) + 1,
+    );
     setInputs(randomInputs.map(String));
   };
 

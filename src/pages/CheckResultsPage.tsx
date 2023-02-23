@@ -3,18 +3,21 @@ import React, { useState } from 'react';
 import { Button } from '../components/Button';
 import { Card } from '../components/Card';
 import { ErrorMessage } from '../components/ErrorMessage';
+import { GoToLink } from '../components/GoToLink';
 import { PageHeader } from '../components/PageHeader';
 import { useApi } from '../composables/useApi';
 import {
   FormContainer,
   Input,
+  LinksContainer,
   NumbersDrawnMessage,
   WinningNumbersButton,
 } from './CheckResultsPage.styles';
 
 export const CheckResultsPage = () => {
   const [ticketId, setTicketId] = useState('');
-  const { getResults, generateWinningNumbers, getRequestError, winningNumbersGenerated } = useApi();
+  const { getResults, generateWinningNumbers, getRequestError, winningNumbersGenerated } =
+    useApi();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -37,7 +40,7 @@ export const CheckResultsPage = () => {
             onClick={drawWinningNumbers}
             onKeyPress={drawWinningNumbers}
           >
-            draw the winning numbers
+            draw&nbsp;the&nbsp;winning&nbsp;numbers
           </WinningNumbersButton>
           &nbsp; now!
         </p>
@@ -47,11 +50,13 @@ export const CheckResultsPage = () => {
       </PageHeader>
       <Card>
         <FormContainer onSubmit={handleSubmit}>
+          <p>Insert your ticket id:</p>
           <Input
             type="text"
             required
             onChange={(event) => setTicketId(event.target.value)}
           />
+
           <Button type="submit">Submit</Button>
           <ErrorMessage>
             {getRequestError
@@ -60,6 +65,11 @@ export const CheckResultsPage = () => {
           </ErrorMessage>
         </FormContainer>
       </Card>
+      <LinksContainer>
+        <GoToLink to="/ticket" isbacklink="true">
+          <span>{'<'}</span> Back to ticket
+        </GoToLink>
+      </LinksContainer>
     </>
   );
 };

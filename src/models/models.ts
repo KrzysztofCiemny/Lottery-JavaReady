@@ -4,7 +4,6 @@ export interface TypedNumbers {
 export interface TicketBody {
   uuid: string;
   creationDateTime: string;
-  drawDateTime: string;
   expirationDateTime: string;
   status: string;
 }

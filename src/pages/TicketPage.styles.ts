@@ -7,6 +7,7 @@ export const TicketContainer = styled.div`
 
   h2 {
     font-size: 2rem;
+    margin-bottom: 0;
   }
 
   ul {
@@ -21,4 +22,19 @@ export const TicketContainer = styled.div`
       margin-bottom: 0.5rem;
     }
   }
+
+  div {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 3rem;
+    span {
+      color: green;
+    }
+  }
+`;
+
+export const LinksContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
 `;

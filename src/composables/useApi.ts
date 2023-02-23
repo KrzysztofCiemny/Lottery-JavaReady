@@ -31,6 +31,7 @@ export const useApi = () => {
       .get(`/api/api/v1/results/${ticketId}`)
       .then((response: AxiosResponse) => {
         lotteryResults = response.data;
+        console.log(response.data);
         navigate('/checkResults/results');
       })
       .catch((error: AxiosError) => {

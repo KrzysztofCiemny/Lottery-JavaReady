@@ -10,6 +10,7 @@ export const PageHeader = styled.div`
   }
   p {
     font-size: 1.1rem;
+    text-align: center;
   }
   @media (min-width: 1024px) {
     h2 {

@@ -33,3 +33,9 @@ export const NumbersDrawnMessage = styled.p`
   margin: 0;
   font-size: 0.8rem;
 `;
+
+export const LinksContainer = styled.div`
+  display: flex;
+  width: 100%;
+  margin: 1rem 0;
+`;

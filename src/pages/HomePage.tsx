@@ -1,9 +1,9 @@
+import { GoToLink } from '../components/GoToLink';
 import {
   DescriptionSection,
   HeroBanner,
   HeroContent,
   HeroImage,
-  PlayLink,
   PlayLinkContainer,
 } from './HomePage.styles';
 
@@ -21,9 +21,9 @@ export const HomePage = () => {
         </HeroImage>
       </HeroBanner>
       <PlayLinkContainer>
-        <PlayLink to="/play">
+        <GoToLink to="/play">
           Play <span>{'>'}</span>
-        </PlayLink>
+        </GoToLink>
       </PlayLinkContainer>
       <DescriptionSection>
         <h3>How to play?</h3>
@@ -38,8 +38,8 @@ export const HomePage = () => {
 
         <h3>Rewards</h3>
         <p>
-          Your reward is a unique opportunity to do something good. For each level of win,
-          you can support animal shelters!
+          Your reward is a unique opportunity to do something good. All your rewards will
+          be donated to animal shelters!
         </p>
       </DescriptionSection>
     </>

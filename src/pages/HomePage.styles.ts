@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { theme } from '../Theme';
@@ -68,36 +67,6 @@ export const PlayLinkContainer = styled.div`
   margin-top: 8rem;
   @media (min-width: 1024px) {
     margin-top: 3rem;
-  }
-`;
-
-export const PlayLink = styled(NavLink)`
-  display: flex;
-  justify-content: center;
-  color: ${theme.dark};
-  text-decoration: none;
-  max-width: 8ch;
-  cursor: pointer;
-  font-size: 1.2rem;
-  font-weight: 500;
-  display: flex;
-  transition: all 0.3s ease-in-out;
-
-  @media (min-width: 1024px) {
-    font-size: 1.5rem;
-  }
-
-  span {
-    margin-left: 0.5rem;
-    transition: transform 0.3s ease-in-out;
-  }
-
-  :hover {
-    transform: translateX(0.3rem) scale(102%);
-  }
-
-  :hover span {
-    transform: translateX(0.6rem) scale(102%);
   }
 `;
 
