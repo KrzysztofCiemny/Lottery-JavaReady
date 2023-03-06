@@ -5,5 +5,5 @@ export const theme = {
   secondaryHover: '#dfac07',
   secondaryContrast: '#0530B9',
   dark: '#181818',
-  darkContrast: '#F8FBF8',
+  darkContrast: '#FAFAFA',
 };

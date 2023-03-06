@@ -2,12 +2,12 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import { PageWrapper } from './components/PageWrapper';
-import { CheckResultsPage } from './pages/CheckResultsPage';
-import { HomePage } from './pages/HomePage';
-import { PlayPage } from './pages/PlayPage';
-import { ResultsPage } from './pages/ResultsPage';
-import { TicketPage } from './pages/TicketPage';
+import { PageWrapper } from './components/PageWrapper/PageWrapper';
+import { CheckResultsPage } from './pages/CheckResultsPage/CheckResultsPage';
+import { HomePage } from './pages/HomePage/HomePage';
+import { PlayPage } from './pages/PlayPage/PlayPage';
+import { ResultsPage } from './pages/ResultsPage/ResultsPage';
+import { TicketPage } from './pages/TicketPage/TicketPage';
 import { theme } from './Theme';
 
 const App: React.FC = () => {

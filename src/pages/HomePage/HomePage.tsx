@@ -1,4 +1,4 @@
-import { GoToLink } from '../components/GoToLink';
+import { GoToLink } from '../../components/GoToLink';
 import {
   DescriptionSection,
   HeroBanner,

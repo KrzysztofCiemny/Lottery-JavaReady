@@ -1,5 +1,5 @@
 export interface TypedNumbers {
-  typedNumbers: number[];
+  typedNumbers: string[];
 }
 export interface TicketBody {
   uuid: string;

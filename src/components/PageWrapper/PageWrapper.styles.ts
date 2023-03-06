@@ -5,6 +5,7 @@ export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 `;
 
 export const Wrapper = styled.div`
@@ -12,12 +13,13 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  div {
-    flex: 1;
-    width: 100%;
-    max-width: 1024px;
-    @media (min-width: 1440px) {
-      max-width: 1440px;
-    }
+`;
+
+export const InsideWrapper = styled.div`
+  flex: 1;
+  width: 100%;
+  max-width: 1024px;
+  @media (min-width: 1440px) {
+    max-width: 1440px;
   }
 `;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { theme } from '../Theme';
+import { theme } from '../../Theme';
 
 export const FormContainer = styled.form`
   display: flex;

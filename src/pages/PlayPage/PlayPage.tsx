@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 
-import { Button } from '../components/Button';
-import { Card } from '../components/Card';
-import { ErrorMessage } from '../components/ErrorMessage';
-import { PageHeader } from '../components/PageHeader';
-import { useApi } from '../composables/useApi';
-import { FormButtonsContainer, FormContainer, Input } from './PlayPage.styles';
+import { Button } from '../../components/Button';
+import { Card } from '../../components/Card';
+import { ErrorMessage } from '../../components/ErrorMessage';
+import { PageHeader } from '../../components/PageHeader';
+import { useApi } from '../../composables/useApi';
+import { ButtonsContainer, Container, Input } from './PlayPage.styles';
+
+const NUMBER_OF_INPUTS = 6;
+const getRandomBetween1to99 = () => Math.floor(Math.random() * 99) + 1;
 
 export const PlayPage = () => {
-  const [inputs, setInputs] = useState(Array(6).fill(''));
+  const [inputs, setInputs] = useState<string[]>(Array(NUMBER_OF_INPUTS).fill(''));
   const { sendNumbers, postRequestError } = useApi();
 
   const handleInputChange = (
@@ -22,22 +25,16 @@ export const PlayPage = () => {
     if (updatedInputs[index].length > 2) {
       updatedInputs[index] = updatedInputs[index].slice(0, 2);
     }
-    if (updatedInputs[index].charAt(0) == 0) {
+    if (updatedInputs[index].charAt(0) == '0') {
       updatedInputs[index] = updatedInputs[index].slice(1);
     }
   };
 
-  const handleInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const inputValidation = (event: React.KeyboardEvent<HTMLInputElement>) => {
     switch (event.key) {
       case '-':
-        event.preventDefault();
-        return false;
       case '.':
-        event.preventDefault();
-        return false;
       case ',':
-        event.preventDefault();
-        return false;
       case '+':
         event.preventDefault();
         return false;
@@ -45,16 +42,10 @@ export const PlayPage = () => {
   };
 
   const fillRandom = () => {
-    const randomInputs = Array.from(
-      { length: 6 },
-      () => Math.floor(Math.random() * 99) + 1,
+    const randomInputs = Array.from({ length: NUMBER_OF_INPUTS }, () =>
+      getRandomBetween1to99(),
     );
     setInputs(randomInputs.map(String));
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    sendNumbers({ typedNumbers: inputs });
   };
 
   return (
@@ -64,7 +55,7 @@ export const PlayPage = () => {
         <p>Enter your lucky numbers or just fill the fields randomly</p>
       </PageHeader>
       <Card>
-        <FormContainer onSubmit={handleSubmit}>
+        <Container>
           <div>
             {inputs.map((input, index) => (
               <Input
@@ -72,25 +63,27 @@ export const PlayPage = () => {
                 type="number"
                 value={input}
                 onChange={(event) => handleInputChange(event, index)}
-                onKeyDown={(event) => handleInputKeyDown(event)}
+                onKeyDown={(event) => inputValidation(event)}
                 required
                 min={1}
                 max={99}
               />
             ))}
           </div>
-          <FormButtonsContainer>
+          <ButtonsContainer>
             <Button type="button" onClick={fillRandom}>
               Random
             </Button>
-            <Button type="submit">Submit</Button>
-          </FormButtonsContainer>
+            <Button type="submit" onClick={() => sendNumbers({ typedNumbers: inputs })}>
+              Submit
+            </Button>
+          </ButtonsContainer>
           <ErrorMessage>
             {postRequestError
               ? 'Something went wrong. Please try again or refresh the page'
               : ''}
           </ErrorMessage>
-        </FormContainer>
+        </Container>
       </Card>
     </>
   );

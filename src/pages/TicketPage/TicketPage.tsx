@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-import { Card } from '../components/Card';
-import { GoToLink } from '../components/GoToLink';
-import { useApi } from '../composables/useApi';
+import { Card } from '../../components/Card';
+import { GoToLink } from '../../components/GoToLink';
+import { useApi } from '../../composables/useApi';
 import { LinksContainer, TicketContainer } from './TicketPage.styles';
 
 export const TicketPage = () => {

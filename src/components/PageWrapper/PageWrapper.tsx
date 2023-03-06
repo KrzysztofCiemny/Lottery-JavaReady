@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 
-import { Footer } from './Footer';
-import { Navbar } from './Navbar';
-import { ContentWrapper, Wrapper } from './PageWrapper.styles';
+import { Footer } from '../Footer/Footer';
+import { Navbar } from '../Navbar/Navbar';
+import { ContentWrapper, InsideWrapper, Wrapper } from './PageWrapper.styles';
 
 interface Props {
   children: ReactNode;
@@ -11,10 +11,10 @@ interface Props {
 export const PageWrapper = ({ children }: Props) => {
   return (
     <Wrapper>
-      <Navbar />
-      <div>
+      <InsideWrapper>
+        <Navbar />
         <ContentWrapper>{children}</ContentWrapper>
-      </div>
+      </InsideWrapper>
       <Footer />
     </Wrapper>
   );

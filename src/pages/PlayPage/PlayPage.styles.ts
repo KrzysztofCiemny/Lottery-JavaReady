@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const FormContainer = styled.form`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,7 +14,7 @@ export const FormContainer = styled.form`
   }
 `;
 
-export const FormButtonsContainer = styled.div`
+export const ButtonsContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

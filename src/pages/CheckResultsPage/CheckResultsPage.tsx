@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-import { Button } from '../components/Button';
-import { Card } from '../components/Card';
-import { ErrorMessage } from '../components/ErrorMessage';
-import { GoToLink } from '../components/GoToLink';
-import { PageHeader } from '../components/PageHeader';
-import { useApi } from '../composables/useApi';
+import { Button } from '../../components/Button';
+import { Card } from '../../components/Card';
+import { ErrorMessage } from '../../components/ErrorMessage';
+import { GoToLink } from '../../components/GoToLink';
+import { PageHeader } from '../../components/PageHeader';
+import { useApi } from '../../composables/useApi';
 import {
   FormContainer,
   Input,

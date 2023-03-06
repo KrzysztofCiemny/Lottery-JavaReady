@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Card } from '../components/Card';
-import { GoToLink } from '../components/GoToLink';
-import { useApi } from '../composables/useApi';
+import { Card } from '../../components/Card';
+import { GoToLink } from '../../components/GoToLink';
+import { useApi } from '../../composables/useApi';
 import { LinksContainer, ResultsContainer } from './ResultsPage.styles';
 
 export const ResultsPage = () => {

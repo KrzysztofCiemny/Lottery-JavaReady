@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,51 +13,47 @@ export const useApi = () => {
   const [getRequestError, setGetRequestError] = useState(false);
   const [winningNumbersGenerated, setWinningNumbersGenerated] = useState(false);
 
-  const sendNumbers = (numbers: TypedNumbers) => {
-    axios
-      .post('/api/api/v1/receiver', numbers)
-      .then((response: AxiosResponse) => {
-        ticket = response.data;
-        navigate('/ticket');
-      })
-      .catch((error: AxiosError) => {
-        if (error) setPostRequestError(true);
-        else setPostRequestError(false);
-      });
+  const sendNumbers = async (numbers: TypedNumbers) => {
+    try {
+      const response = await axios.post('/api/api/v1/receiver', numbers);
+      ticket = response.data;
+    } catch (error) {
+      if (error) setPostRequestError(true);
+      else setPostRequestError(false);
+    } finally {
+      navigate('/ticket');
+    }
   };
 
-  const getResults = (ticketId: string) => {
-    axios
-      .get(`/api/api/v1/results/${ticketId}`)
-      .then((response: AxiosResponse) => {
-        lotteryResults = response.data;
-        console.log(response.data);
-        navigate('/checkResults/results');
-      })
-      .catch((error: AxiosError) => {
-        if (error) setGetRequestError(true);
-        else setGetRequestError(false);
-      });
+  const getResults = async (ticketId: string) => {
+    try {
+      const response = await axios.get(`/api/api/v1/results/${ticketId}`);
+      lotteryResults = response.data;
+    } catch (error) {
+      if (error) setGetRequestError(true);
+      else setGetRequestError(false);
+    } finally {
+      navigate('/checkResults/results');
+    }
   };
 
-  const generateWinningNumbers = () => {
-    axios
-      .get('/api/generate')
-      .then(() => setWinningNumbersGenerated(true))
-      .catch((error: AxiosError) => {
-        if (error) setGetRequestError(true);
-        else setGetRequestError(false);
-      });
+  const generateWinningNumbers = async () => {
+    try {
+      await axios.get('/api/generate');
+      setWinningNumbersGenerated(true);
+    } catch (error) {
+      setGetRequestError(true);
+    }
   };
 
   return {
     sendNumbers,
-    ticket,
     getResults,
     generateWinningNumbers,
-    lotteryResults,
     postRequestError,
     getRequestError,
     winningNumbersGenerated,
+    ticket,
+    lotteryResults,
   };
 };
