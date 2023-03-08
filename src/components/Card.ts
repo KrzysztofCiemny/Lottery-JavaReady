@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const Card = styled.div`
-  padding: 2rem;
-  margin: 1rem 0;
-  background-color: #fff;
+  padding: clamp(1rem, 1rem, 2rem);
+  margin: 1rem;
+  background-color: ${({ theme }) => theme.card};
   border-radius: 1em;
-  box-shadow: 0 5px 15px -10px #000;
+  box-shadow: 0 5px 15px -10px ${({ theme }) => theme.textPrimary};
+  transition: 0.5s;
 `;

@@ -7,25 +7,24 @@ import { GoToLink } from '../../components/GoToLink';
 import { PageHeader } from '../../components/PageHeader';
 import { useApi } from '../../composables/useApi';
 import {
-  FormContainer,
+  Container,
   Input,
   LinksContainer,
   NumbersDrawnMessage,
+  NumbersLoadingMessage,
   WinningNumbersButton,
 } from './CheckResultsPage.styles';
 
 export const CheckResultsPage = () => {
   const [ticketId, setTicketId] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
   const { getResults, generateWinningNumbers, getRequestError, winningNumbersGenerated } =
     useApi();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    getResults(ticketId);
-  };
-
   const drawWinningNumbers = () => {
     generateWinningNumbers();
+    setIsLoading(true);
   };
 
   return (
@@ -44,12 +43,15 @@ export const CheckResultsPage = () => {
           </WinningNumbersButton>
           &nbsp; now!
         </p>
+        <NumbersLoadingMessage>
+          {isLoading && !winningNumbersGenerated ? 'Waiting for the numbers...' : ''}
+        </NumbersLoadingMessage>
         <NumbersDrawnMessage>
           {winningNumbersGenerated ? 'Numbers have been drawn!' : ''}
         </NumbersDrawnMessage>
       </PageHeader>
       <Card>
-        <FormContainer onSubmit={handleSubmit}>
+        <Container>
           <p>Insert your ticket id:</p>
           <Input
             type="text"
@@ -57,13 +59,15 @@ export const CheckResultsPage = () => {
             onChange={(event) => setTicketId(event.target.value)}
           />
 
-          <Button type="submit">Submit</Button>
+          <Button type="button" onClick={() => getResults(ticketId)}>
+            Submit
+          </Button>
           <ErrorMessage>
             {getRequestError
               ? 'Something went wrong. Please try again or refresh the page'
               : ''}
           </ErrorMessage>
-        </FormContainer>
+        </Container>
       </Card>
       <LinksContainer>
         <GoToLink to="/ticket" isbacklink="true">

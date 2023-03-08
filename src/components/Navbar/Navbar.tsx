@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
-import { Header, Logo, Nav, NavWrapper, StyledLink } from './Navbar.styles';
+import { ThemeToggler } from '../ThemeToggler/ThemeToggler';
+import {
+  Header,
+  Logo,
+  LogoContainer,
+  Nav,
+  NavWrapper,
+  StyledLink,
+} from './Navbar.styles';
 
-export const Navbar = () => {
+export const Navbar = ({ toggleTheme, theme }: any) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -23,7 +31,10 @@ export const Navbar = () => {
 
   return (
     <Header isScrolled={isScrolled}>
-      <Logo>JavaReady.pl</Logo>
+      <LogoContainer>
+        <Logo>JavaReady</Logo>
+        <ThemeToggler toggleTheme={toggleTheme} theme={theme} />
+      </LogoContainer>
       <NavWrapper>
         <Nav>
           <StyledLink to="/">Home</StyledLink>

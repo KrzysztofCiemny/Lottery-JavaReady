@@ -22,8 +22,13 @@ export const ButtonsContainer = styled.div`
 `;
 
 export const Input = styled.input`
-  width: clamp(36px, 13%, 100px);
+  width: clamp(37px, 13%, 100px);
+  background-color: ${({ theme }) => theme.card};
+  color: ${({ theme }) => theme.textPrimary};
+  border: 1px solid ${({ theme }) => theme.textPrimary};
+  border-radius: 0.4rem;
   margin: 0.4rem;
+  padding: 0.3rem;
   font-size: 1.2rem;
   text-align: center;
   ::-webkit-outer-spin-button,
@@ -31,6 +36,7 @@ export const Input = styled.input`
     -webkit-appearance: none;
     margin: 0;
   }
+  transition: 0.5s;
   -moz-appearance: textfield;
   @media (min-width: 1024px) {
     padding: 0.5rem;

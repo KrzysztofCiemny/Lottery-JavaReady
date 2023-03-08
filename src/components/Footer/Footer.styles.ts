@@ -1,12 +1,8 @@
 import styled from 'styled-components';
 
-import { theme } from '../../Theme';
-
 export const FooterWrapper = styled.footer`
-  background-color: ${theme.darkContrast};
   opacity: 0.9;
   border-top: 1px solid lightgrey;
-  color: ${theme.dark};
   padding: 2rem 0;
   display: flex;
   justify-content: center;

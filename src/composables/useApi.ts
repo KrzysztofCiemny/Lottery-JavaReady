@@ -17,11 +17,10 @@ export const useApi = () => {
     try {
       const response = await axios.post('/api/api/v1/receiver', numbers);
       ticket = response.data;
+      navigate('/ticket');
     } catch (error) {
       if (error) setPostRequestError(true);
       else setPostRequestError(false);
-    } finally {
-      navigate('/ticket');
     }
   };
 
@@ -29,11 +28,10 @@ export const useApi = () => {
     try {
       const response = await axios.get(`/api/api/v1/results/${ticketId}`);
       lotteryResults = response.data;
+      navigate('/checkResults/results');
     } catch (error) {
       if (error) setGetRequestError(true);
       else setGetRequestError(false);
-    } finally {
-      navigate('/checkResults/results');
     }
   };
 

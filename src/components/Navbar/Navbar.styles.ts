@@ -1,8 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { theme } from '../../Theme';
-
 interface HeaderProps {
   isScrolled: boolean;
 }
@@ -12,26 +10,42 @@ export const Header = styled.header<HeaderProps>`
   display: flex;
   justify-content: space-between;
   overflow: hidden;
-  background-color: ${theme.darkContrast};
+  background-color: ${({ theme }) => theme.background};
   opacity: 0.95;
   border-bottom: 1px solid lightgrey;
   width: 100%;
+  transition: background-color 0.5s;
 
   @media (min-width: 768px) {
     position: sticky;
     top: 0;
     align-items: center;
     padding: 1.3rem;
-    transition: all 0.2s;
-    margin-top: ${(Props) => (Props.isScrolled ? '0' : '3rem')};
-    border-bottom: ${(Props) => (Props.isScrolled ? '1px solid lightgrey;' : 'unset')};
+    transition: background-color 0.5s, margin-top 0.2s, border-bottom 0.2s;
+    margin-top: ${({ isScrolled }) => (isScrolled ? '0' : '3rem')};
+    border-bottom: ${({ isScrolled }) => (isScrolled ? '1px solid lightgrey;' : 'unset')};
+  }
+`;
+
+export const LogoContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  @media (min-width: 768px) {
+    width: unset;
+    justify-content: unset;
   }
 `;
 
 export const Logo = styled.div`
-  color: ${theme.secondary};
+  color: ${({ theme }) => theme.logo};
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 900;
+
+  @media (min-width: 768px) {
+    margin-right: 1rem;
+  }
 `;
 
 export const NavWrapper = styled.nav`
@@ -42,16 +56,15 @@ export const NavWrapper = styled.nav`
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: ${theme.darkContrast};
+  background-color: ${({ theme }) => theme.background};
   z-index: 2;
   border-top: 1px solid lightgrey;
+  transition: 0.5s;
 
   @media (min-width: 768px) {
     height: 100%;
     width: unset;
     position: unset;
-    transform: unset;
-    transition: unset;
     border-top: unset;
   }
 `;
@@ -71,7 +84,7 @@ export const Nav = styled.ul`
 `;
 
 export const StyledLink = styled(NavLink)`
-  color: ${theme.primary};
+  color: ${({ theme }) => theme.textSecondary};
   padding: 0 1.5rem;
   font-size: 1.1rem;
   font-weight: bold;
@@ -80,7 +93,7 @@ export const StyledLink = styled(NavLink)`
   transition: color 0.3s;
 
   :hover {
-    color: ${theme.secondary};
+    color: ${({ theme }) => theme.textPrimary};
   }
 
   @media (min-width: 768px) {
@@ -92,7 +105,7 @@ export const StyledLink = styled(NavLink)`
       content: '';
       width: 0;
       height: 2px;
-      background: ${theme.secondary};
+      background: ${({ theme }) => theme.textHighlited};
       position: absolute;
       bottom: -0.5rem;
       right: 0%;

@@ -14,3 +14,11 @@ export interface lotteryResultsBody {
   typedNumbers: number[];
   matchedNumbers: number[];
 }
+
+export interface ThemeType {
+  background: string;
+  textPrimary: string;
+  textSecondary: string;
+  textHighlited: string;
+  buttonHover: string;
+}

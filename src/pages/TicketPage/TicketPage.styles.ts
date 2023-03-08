@@ -28,12 +28,13 @@ export const TicketContainer = styled.div`
     width: 100%;
     margin-bottom: 3rem;
     span {
-      color: green;
+      color: ${({ theme }) => theme.positive};
     }
   }
 `;
 
 export const LinksContainer = styled.div`
+  width: 100%;
   display: flex;
   justify-content: space-between;
   margin: 1rem 0;

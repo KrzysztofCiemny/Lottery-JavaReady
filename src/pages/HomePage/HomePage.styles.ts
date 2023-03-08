@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
-import { theme } from '../../Theme';
-
 export const HeroBanner = styled.div`
   padding: 1.5rem 1rem;
   display: flex;
+  width: 100%;
   @media (min-width: 1024px) {
     justify-content: center;
     padding: 3rem 0;
@@ -22,17 +21,17 @@ export const HeroContent = styled.div`
     font-size: 2rem;
     margin: 0;
     max-width: 17ch;
-    color: #808080;
+    color: ${({ theme }) => theme.textSecondary};
   }
   span {
-    color: ${theme.dark};
+    color: ${({ theme }) => theme.textPrimary};
   }
   @media (min-width: 1024px) {
     max-width: 50%;
     align-items: flex-end;
     h1 {
       padding-top: 4rem;
-      font-size: 2.6rem;
+      font-size: 3rem;
     }
   }
   @media (min-width: 1440px) {
@@ -102,7 +101,7 @@ export const DescriptionSection = styled.section`
     font-size: 1.1rem;
 
     h3 {
-      font-size: 4rem;
+      font-size: 3rem;
     }
     div {
       max-width: 90%;
