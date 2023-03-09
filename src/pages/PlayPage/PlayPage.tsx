@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import React, { useState } from 'react';
 
 import { Button } from '../../components/Button';
@@ -51,8 +52,8 @@ export const PlayPage = () => {
   return (
     <>
       <PageHeader>
-        <h2>Play the lottery</h2>
-        <p>Enter your lucky numbers or just fill the fields randomly</p>
+        <h2>{t('playTheLotteryMessage')}</h2>
+        <p>{t('enterNumbersMessage')}</p>
       </PageHeader>
       <Card>
         <Container>
@@ -72,17 +73,13 @@ export const PlayPage = () => {
           </div>
           <ButtonsContainer>
             <Button type="button" onClick={fillRandom}>
-              Random
+              {t('randomMessage')}
             </Button>
             <Button type="submit" onClick={() => sendNumbers({ typedNumbers: inputs })}>
-              Submit
+              {t('submitMessage')}
             </Button>
           </ButtonsContainer>
-          <ErrorMessage>
-            {postRequestError
-              ? 'Something went wrong. Please try again or refresh the page'
-              : ''}
-          </ErrorMessage>
+          <ErrorMessage>{postRequestError ? t('errorMessage') : ''}</ErrorMessage>
         </Container>
       </Card>
     </>

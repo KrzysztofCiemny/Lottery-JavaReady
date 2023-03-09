@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import React, { useState } from 'react';
 
 import { Button } from '../../components/Button';
@@ -30,29 +31,28 @@ export const CheckResultsPage = () => {
   return (
     <>
       <PageHeader>
-        <h2>Check results</h2>
+        <h2>{t('checkResultsMessage')}</h2>
         <p>
-          Winning numbers are drawn every Saturday. However, if you don&apos;t want to
-          wait until Saturday, just&nbsp;
+          {t('drawNumbers1Message')}&nbsp;
           <WinningNumbersButton
             role={Button}
             onClick={drawWinningNumbers}
             onKeyPress={drawWinningNumbers}
           >
-            draw&nbsp;the&nbsp;winning&nbsp;numbers
+            {t('drawNumbers2Message')}
           </WinningNumbersButton>
-          &nbsp; now!
+          &nbsp; {t('drawNumbers3Message')}
         </p>
         <NumbersLoadingMessage>
-          {isLoading && !winningNumbersGenerated ? 'Waiting for the numbers...' : ''}
+          {isLoading && !winningNumbersGenerated ? t('waitingMessage') : ''}
         </NumbersLoadingMessage>
         <NumbersDrawnMessage>
-          {winningNumbersGenerated ? 'Numbers have been drawn!' : ''}
+          {winningNumbersGenerated ? t('numbersDrawnMessage') : ''}
         </NumbersDrawnMessage>
       </PageHeader>
       <Card>
         <Container>
-          <p>Insert your ticket id:</p>
+          <p>{t('insertIdMessage')}</p>
           <Input
             type="text"
             required
@@ -60,18 +60,14 @@ export const CheckResultsPage = () => {
           />
 
           <Button type="button" onClick={() => getResults(ticketId)}>
-            Submit
+            {t('submitMessage')}
           </Button>
-          <ErrorMessage>
-            {getRequestError
-              ? 'Something went wrong. Please try again or refresh the page'
-              : ''}
-          </ErrorMessage>
+          <ErrorMessage>{getRequestError ? t('errorMessage') : ''}</ErrorMessage>
         </Container>
       </Card>
       <LinksContainer>
         <GoToLink to="/ticket" isbacklink="true">
-          <span>{'<'}</span> Back to ticket
+          <span>{'<'}</span> {t('backToTicketMessage')}
         </GoToLink>
       </LinksContainer>
     </>

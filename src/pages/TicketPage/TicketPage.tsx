@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import React, { useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
@@ -21,30 +22,36 @@ export const TicketPage = () => {
     <>
       <Card>
         <TicketContainer>
-          <h2>Lottery ticket</h2>
+          <h2>{t('ticketMessage')}</h2>
           <div>
-            <p>Copy the ticket ID by clicking on it</p>
-            {isCopied ? <span>Copied ✓</span> : null}
+            <p>{t('copyTicketMessage')}</p>
+            {isCopied ? <span>{t('copiedMessage')}</span> : null}
           </div>
           <ul>
             <li>
-              ID:&nbsp;
+              {t('idMessage')}
               <CopyToClipboard text={uuid} onCopy={() => setIsCopied(true)}>
                 <span style={{ cursor: 'pointer' }}>{uuid}</span>
               </CopyToClipboard>
             </li>
-            <li>Created: {convertDate(creationDateTime)}</li>
-            <li>Expires: {convertDate(expirationDateTime)}</li>
-            <li>Status: {status}</li>
+            <li>
+              {t('createdMessage')} {convertDate(creationDateTime)}
+            </li>
+            <li>
+              {t('expiresMessage')} {convertDate(expirationDateTime)}
+            </li>
+            <li>
+              {t('statusMessage')} {status}
+            </li>
           </ul>
         </TicketContainer>
       </Card>
       <LinksContainer>
         <GoToLink to="/play" isbacklink="true">
-          <span>{'<'}</span> Play
+          <span>{'<'}</span> {t('playMessage')}
         </GoToLink>
         <GoToLink to="/checkResults">
-          Check results <span>{'>'}</span>
+          {t('checkResultsMessage')} <span>{'>'}</span>
         </GoToLink>
       </LinksContainer>
     </>

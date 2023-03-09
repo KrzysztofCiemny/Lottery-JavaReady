@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import React from 'react';
 
 import { Card } from '../../components/Card';
@@ -19,28 +20,34 @@ export const ResultsPage = () => {
     <>
       <Card>
         {winningNumbers == null ? (
-          <div>Go back and draw numbers or wait till Saturday</div>
+          <div>{t('goBackAndDrawMessage')}</div>
         ) : (
           <ResultsContainer>
             {!isWinner ? (
-              <h2>Unfortunately, you didn&apos;t win :(</h2>
+              <h2>{t('noWinMessage')}</h2>
             ) : (
               <>
-                <h2>You win the lottery!</h2>
-                <p>Thanks to you, animals will live well :)</p>
+                <h2>{t('youWinMessage')}</h2>
+                <p>{t('thanksToYouMessage')}</p>
               </>
             )}
             <ul>
-              <li>Winning numbers: {convertArray(winningNumbers)}</li>
-              <li>Your numbers: {convertArray(typedNumbers)}</li>
-              <li>Matched numbers: {convertArray(matchedNumbers)}</li>
+              <li>
+                {t('winningNumbersMessage')} {convertArray(winningNumbers)}
+              </li>
+              <li>
+                {t('yourNumbersMessage')} {convertArray(typedNumbers)}
+              </li>
+              <li>
+                {t('matchedNumbersMessage')} {convertArray(matchedNumbers)}
+              </li>
             </ul>
           </ResultsContainer>
         )}
       </Card>
       <LinksContainer>
         <GoToLink to="/checkResults" isbacklink="true">
-          <span>{'<'}</span> Check results
+          <span>{'<'}</span> {t('checkResultsMessage')}
         </GoToLink>
       </LinksContainer>
     </>

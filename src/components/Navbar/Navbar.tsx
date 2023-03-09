@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import React, { useEffect, useState } from 'react';
 
 import { ThemeToggler } from '../ThemeToggler/ThemeToggler';
@@ -32,14 +33,14 @@ export const Navbar = ({ toggleTheme, theme }: any) => {
   return (
     <Header isScrolled={isScrolled}>
       <LogoContainer>
-        <Logo>JavaReady</Logo>
+        <Logo>{t('logoMessage')}</Logo>
         <ThemeToggler toggleTheme={toggleTheme} theme={theme} />
       </LogoContainer>
       <NavWrapper>
         <Nav>
-          <StyledLink to="/">Home</StyledLink>
-          <StyledLink to="/play">Play</StyledLink>
-          <StyledLink to="/checkResults">Results</StyledLink>
+          <StyledLink to="/">{t('homeMessage')}</StyledLink>
+          <StyledLink to="/play">{t('playMessage')}</StyledLink>
+          <StyledLink to="/checkResults">{t('resultsMessage')}</StyledLink>
         </Nav>
       </NavWrapper>
     </Header>
