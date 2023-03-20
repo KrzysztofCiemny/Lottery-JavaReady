@@ -12,7 +12,7 @@ import { ResultsPage } from './pages/ResultsPage/ResultsPage';
 import { TicketPage } from './pages/TicketPage/TicketPage';
 import { darkTheme, lightTheme } from './Theme';
 
-const App: React.FC = () => {
+const App = () => {
   const [theme, toggleTheme] = useDarkMode();
 
   const themeMode = theme === 'light' ? lightTheme : darkTheme;
