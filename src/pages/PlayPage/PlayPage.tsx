@@ -8,11 +8,11 @@ import { PageHeader } from '../../components/PageHeader';
 import { useApi } from '../../composables/useApi';
 import { ButtonsContainer, Container, Input } from './PlayPage.styles';
 
-const NUMBER_OF_INPUTS = 6;
+const numberOfInputs = 6;
 const getRandomBetween1to99 = () => Math.floor(Math.random() * 99) + 1;
 
 export const PlayPage = () => {
-  const [inputs, setInputs] = useState<string[]>(Array(NUMBER_OF_INPUTS).fill(''));
+  const [inputs, setInputs] = useState<string[]>(Array(numberOfInputs).fill(''));
   const { sendNumbers, postRequestError } = useApi();
 
   const handleInputChange = (
@@ -43,7 +43,7 @@ export const PlayPage = () => {
   };
 
   const fillRandom = () => {
-    const randomInputs = Array.from({ length: NUMBER_OF_INPUTS }, () =>
+    const randomInputs = Array.from({ length: numberOfInputs }, () =>
       getRandomBetween1to99(),
     );
     setInputs(randomInputs.map(String));
