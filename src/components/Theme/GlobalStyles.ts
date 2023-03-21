@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-import { ThemeType } from '../models/models';
+import { ThemeType } from '../../models/models';
 
 export const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
   *, *::before, *::after {
